@@ -1,23 +1,20 @@
 <template>
 	<base-layout page-title="All Memories">
-		<ion-list>
-			<ion-item router-link="/memories/1">A trip into the mountains</ion-item>
-			<ion-item>Surfing</ion-item>
-			<ion-item>Good eating</ion-item>
-		</ion-list>
+		<memories-list :memories="memories"></memories-list>
 	</base-layout>
 </template>
 
 <script>
-import { 
-	IonList, 
-	IonItem
-} from '@ionic/vue';
+import MemoriesList from '../components/memories/MemoriesList.vue';
 
 export default {
 	components: {
-		IonList,
-		IonItem
+		MemoriesList
+	},
+	computed:{
+		memories(){
+			return this.$store.getters.memories;
+		}
 	}
 }
 </script>
