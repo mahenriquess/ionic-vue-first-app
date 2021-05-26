@@ -25,6 +25,24 @@ const store = createStore({
 			],
 		}
     },
+	mutations:{
+		addMemory(state, memoryData){
+			const newMemory = {
+				id: new Date().toISOString(),
+				title: memoryData.title,
+				image: memoryData.imageUrl,
+				description: memoryData.description
+			};
+
+			state.memories.unshift(newMemory);
+		}
+	},
+	actions:{
+		addMemory(context, memoryData){ 
+			//utilizar este metodo para enviar para o BD
+			context.commit('addMemory', memoryData);
+		}
+	},
     getters:{
         memories(state){
             return state.memories;
